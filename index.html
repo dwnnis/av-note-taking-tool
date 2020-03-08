@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 
 <h1>My First Heading</h1>
 <p>My first paragraph.</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BiySUpmBUCo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div id="player"></div>
+
+<div id="timestamp"></div>
+
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/BiySUpmBUCo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+<!-- click to display timestamp -->
+<button type="button" onclick="updatetime()">Timestamp</button>
+<!-- click to start recording voice -->
+<button type="button">Record Voice</button>
+<!-- click to take screenshot of current video frame -->
+<button type="button">Screenshot</button>
+
+<script type="text/javascript" src="video.js"></script>
 
 </body>
 </html>
