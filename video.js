@@ -29,7 +29,7 @@ function onPlayerReady(event) {
 //    the player should play for six seconds and then stop.
 var done = false;
 function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
     setTimeout(stopVideo, 60000);
     done = true;
   }
@@ -38,10 +38,23 @@ function stopVideo() {
   player.stopVideo();
 }
 
-// listen to button and change html
+// TIMESTAMP: listen to button and change html
 var timestamp = document.getElementById("timestamp");
 function updatetime() {
   timestamp.innerHTML = player.getCurrentTime();
 }
 
-// record voice: 1) pause video 2) record 3)
+// SCREENSHOT: listen to button and take screenshot
+function screenshot(){
+  html2canvas(document.querySelector(".html5-video-container")).then(canvas => {
+    document.body.appendChild(canvas)
+  });
+}
+
+// NAVIGATE BUTTON: 1) go to certain time 2) pause
+function navigateVideoAtTime(timestamp) {
+  player.seekTo(timestamp, true);
+  player.pauseVideo();
+}
+
+// VOICE RECORDER: 1) pause video 2) record 3)

@@ -10,16 +10,27 @@
 
 <div id="timestamp"></div>
 
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/BiySUpmBUCo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-
 <!-- click to display timestamp -->
 <button type="button" onclick="updatetime()">Timestamp</button>
 <!-- click to start recording voice -->
 <button type="button">Record Voice</button>
 <!-- click to take screenshot of current video frame -->
-<button type="button">Screenshot</button>
+<button type="button" onclick="screenshot()">Screenshot</button>
+<!-- click to take screenshot of current video frame -->
+<button type="button" onclick="navigateVideoAtTime(208.95047290653991)">Go To 208</button>
+<!-- click to take screenshot of current video frame -->
+<button type="button" onclick="navigateVideoAtTime(0)">Go To 0</button>
+<!-- click to take screenshot of current video frame -->
+<button type="button" onclick="navigateVideoAtTime(612.2326861430512)">Go To 612</button>
+<!-- click to take screenshot of current video frame -->
+<button type="button" onclick="navigateVideoAtTime(417.2683831168832)">Go To 417</button>
+
+<!-- add new item to the list. -->
+<div id="note-list"></div>
 
 <script type="text/javascript" src="video.js"></script>
+<script type="text/javascript" src="html2canvas.js"></script>
+<script type="text/javascript" src="index.user.js"></script>
 
 </body>
 </html>
