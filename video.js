@@ -18,13 +18,13 @@ var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var timestampButton = document.getElementById("timestampButton");
 var unmuteButton = document.getElementById("unmuteButton");
-var addElement = document.getElementById("addElementButton");
+// var addElementButton = document.getElementById("addElementButton");
 
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 timestampButton.addEventListener("click", updatetime);
 unmuteButton.addEventListener("click", unmute);
-addElement.addEventListener("click", addElement);
+// addElementButton.addEventListener("click", addElement);
 
 /*
   Official Example of YouTube iframe API
@@ -41,8 +41,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
-    height: '390',
-    width: '640',
+    width: '100%',
     videoId: 'BiySUpmBUCo',
     events: {
       'onReady': onPlayerReady,
@@ -125,6 +124,7 @@ function addElement() {
 
 function startRecording() {
   currentTimestamp = player.getCurrentTime();
+  player.pauseVideo();
 	console.log("recordButton clicked");
 
   var constraints = { audio: true, video:false }
@@ -196,4 +196,7 @@ function createDownloadLink(blob) {
 	li.appendChild(document.createTextNode(filename+".wav "))
 	li.appendChild(link);
 	recordingsList.appendChild(li);
+
+  // after recording done, resume playing video
+  player.playVideo();
 }
