@@ -54,7 +54,13 @@ function screenshot(){
 // NAVIGATE BUTTON: 1) go to certain time 2) pause
 function navigateVideoAtTime(timestamp) {
   player.seekTo(timestamp, true);
-  player.pauseVideo();
+  player.playVideo();
+  player.mute();
+}
+
+// UNMUTE
+function unmute(){
+  player.unMute();
 }
 
 // VOICE RECORDER: 1) pause video 2) record 3)

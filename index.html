@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.ytp-pause-overlay
+ {
+    bottom:-200px; //give !important if not working
+ }
+</style>
 <body>
 
 <h1>My First Heading</h1>
@@ -24,6 +30,8 @@
 <button type="button" onclick="navigateVideoAtTime(612.2326861430512)">Go To 612</button>
 <!-- click to take screenshot of current video frame -->
 <button type="button" onclick="navigateVideoAtTime(417.2683831168832)">Go To 417</button>
+<!-- click to take screenshot of current video frame -->
+<button type="button" onclick="unmute()">UnMute</button>
 
 <!-- add new item to the list. -->
 <div id="note-list"></div>
