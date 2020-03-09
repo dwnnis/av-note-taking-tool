@@ -76,7 +76,7 @@ function stopVideo() {
 */
 
 // TIMESTAMP: listen to button and change html
-var timestamp = document.getElementById("timestamp");
+var timestamp = document.getElementById("timestampButton");
 var currentTimestamp;
 function updatetime() {
   currentTimestamp = player.getCurrentTime();
