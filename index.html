@@ -2,6 +2,19 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
 .ytp-pause-overlay
  {
     bottom:-200px; //give !important if not working
@@ -12,7 +25,9 @@
 <h1>Audio Note-taking</h1>
 <p>Tool for audio note-taking during watching video</p>
 
-<div id="player"></div>
+<div class="video-responsive">
+  <div id="player"></div>
+</div>
 
 <div id="timestamp"></div>
 
