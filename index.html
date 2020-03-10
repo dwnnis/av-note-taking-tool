@@ -5,6 +5,31 @@
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+.body, .wrapper {
+  /* Break the flow */
+  position: absolute;
+  top: 0px;
+
+  /* Give them all the available space */
+  width: 100%;
+  height: 100%;
+
+  /* Remove the margins if any */
+  margin: 0;
+
+  /* Allow them to scroll down the document */
+  overflow-y: hidden;
+}
+
+.body {
+  /* Sending body at the bottom of the stack */
+  z-index: 1;
+}
+
+.wrapper {
+  /* Making the wrapper stack above the body */
+  z-index: 2;
+}
 .fixedElement {
     background-color: #c0c0c0;
     position:fixed;
@@ -30,8 +55,8 @@
     bottom:-200px; //give !important if not working
  }
 </style>
-<body>
-
+<body class="body">
+<div class="wrapper">
 <!-- <h1>Audio Note-taking</h1>
 <p>Tool for audio note-taking during watching video</p> -->
 <div class="sticky-top">
@@ -87,7 +112,7 @@
   </tbody>
 </table>
 </div>
-
+</div>
 <script type="text/javascript" src="video.js"></script>
 <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 

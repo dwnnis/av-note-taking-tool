@@ -183,7 +183,7 @@ function createDownloadLink(blob) {
 
 	//add controls to the <audio> element
 	au.controls = true;
-  au.setAttribute("style", "width: 210px;")
+  au.setAttribute("style", "width: 210px; height: 40px;")
 	au.src = url;
 
 
@@ -211,8 +211,11 @@ function createDownloadLink(blob) {
   var btn_td = document.createElement('td');
   var au_td = document.createElement('td');
   var time_td = document.createElement('td');
+
   th.scope = "row";
   th.innerHTML = counter;
+  counter += 1;
+
   btn_td.appendChild(navBtn);
   au_td.appendChild(au);
   time_td.appendChild(link);
