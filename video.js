@@ -38,12 +38,19 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
+
+// take whatever's behind ? (?https://youtu.be/zCrM5jIqQD4)
+// https://dwnnis.github.io/av-note-taking-tool/?https://youtu.be/zCrM5jIqQD4
+var rawURL = window.location.href.toString();
+var pieces = rawURL.split(/[\s/]+/);
+var videoID = pieces[pieces.length-1];
+
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '100%',
     width: '100%',
-    videoId: 'BiySUpmBUCo',
+    videoId: videoID,
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -125,13 +132,11 @@ function addElement() {
 }
 
 // VOICE RECORDER: 1) pause video 2) record 3)
-
+var constraints = { audio: true, video:false };
 function startRecording() {
   currentTimestamp = player.getCurrentTime();
   player.pauseVideo();
 	console.log("recordButton clicked");
-
-  var constraints = { audio: true, video:false }
 
   recordButton.disabled = true;
 	stopButton.disabled = false;
