@@ -5,7 +5,13 @@
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-
+.fixedElement {
+    background-color: #c0c0c0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+}
 .video-responsive{
     overflow:hidden;
     padding-bottom:56.25%;
@@ -26,33 +32,31 @@
 </style>
 <body>
 
-<h1>Audio Note-taking</h1>
-<p>Tool for audio note-taking during watching video</p>
-
+<!-- <h1>Audio Note-taking</h1>
+<p>Tool for audio note-taking during watching video</p> -->
+<div class="sticky-top">
 <div class="video-responsive">
   <div id="player"></div>
 </div>
 <div class="container">
-<div class="row">
-  <!-- click to display timestamp -->
-    <button id="timestampButton" class="btn btn-primary col">Timestamp</button>
-  <!-- click to start recording voice -->
-    <button id="recordButton" class="btn btn-primary col">Record</button>
-    <button id="stopButton" class="btn btn-primary col" disabled>Stop</button>
-
-<!-- <button id="screenshot" onclick="screenshot()">Screenshot</button> -->
-<!-- <button id="navigationTest" onclick="navigateVideoAtTime(208.95047290653991)">Go To 208</button>
-<button id="navigationTest" onclick="navigateVideoAtTime(0)">Go To 0</button>
-<button id="navigationTest" onclick="navigateVideoAtTime(612.2326861430512)">Go To 612</button>
-<button id="navigationTest" onclick="navigateVideoAtTime(417.2683831168832)">Go To 417</button> -->
-<!-- other -->
-    <button id="unmuteButton" class="btn btn-primary col">UnMute</button>
-<!-- <button id="addElementButton">Add Item</button> -->
+  <div class="row">
+      <button id="timestampButton" class="btn btn-primary col">Timestamp</button>
+      <button id="recordButton" class="btn btn-primary col">Record</button>
+      <button id="stopButton" class="btn btn-primary col" disabled>Stop</button>
+  <!-- <button id="screenshot" onclick="screenshot()">Screenshot</button>
+  <button id="navigationTest" onclick="navigateVideoAtTime(208.95047290653991)">Go To 208</button>
+  <button id="navigationTest" onclick="navigateVideoAtTime(0)">Go To 0</button>
+  <button id="navigationTest" onclick="navigateVideoAtTime(612.2326861430512)">Go To 612</button>
+  <button id="navigationTest" onclick="navigateVideoAtTime(417.2683831168832)">Go To 417</button> -->
+      <button id="unmuteButton" class="btn btn-primary col">UnMute</button>
+      <button id="addElementButton" class="btn btn-primary col">Add Item</button>
+  </div>
 </div>
 </div>
-
 <!-- add new item to the list. -->
-<ol id="recordingsList"></ol>
+<div>
+  <ol id="recordingsList"></ol>
+</div>
 
 <script type="text/javascript" src="video.js"></script>
 <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>

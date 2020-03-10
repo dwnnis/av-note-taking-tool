@@ -18,13 +18,13 @@ var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var timestampButton = document.getElementById("timestampButton");
 var unmuteButton = document.getElementById("unmuteButton");
-// var addElementButton = document.getElementById("addElementButton");
+var addElementButton = document.getElementById("addElementButton");
 
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 timestampButton.addEventListener("click", updatetime);
 unmuteButton.addEventListener("click", unmute);
-// addElementButton.addEventListener("click", addElement);
+addElementButton.addEventListener("click", addElement);
 
 /*
   Official Example of YouTube iframe API
