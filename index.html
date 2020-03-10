@@ -5,21 +5,7 @@
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-* {
-  box-sizing: border-box;
-}
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
+
 .video-responsive{
     overflow:hidden;
     padding-bottom:56.25%;
@@ -46,21 +32,13 @@
 <div class="video-responsive">
   <div id="player"></div>
 </div>
-<div class="col-3">
-  <div id="timestamp"></div>
-</div>
+<div class="container">
 <div class="row">
   <!-- click to display timestamp -->
-  <div class="col-3">
-    <button id="timestampButton">Timestamp</button>
-  </div>
+    <!-- <button id="timestampButton" class="btn btn-primary col">Timestamp</button> -->
   <!-- click to start recording voice -->
-  <div class="col-3">
-    <button id="recordButton">Record</button>
-  </div>
-  <div class="col-3">
-    <button id="stopButton" disabled>Stop</button>
-  </div>
+    <button id="recordButton" class="btn btn-primary col">Record</button>
+    <button id="stopButton" class="btn btn-primary col" disabled>Stop</button>
 
 <!-- <button id="screenshot" onclick="screenshot()">Screenshot</button> -->
 <!-- <button id="navigationTest" onclick="navigateVideoAtTime(208.95047290653991)">Go To 208</button>
@@ -68,10 +46,9 @@
 <button id="navigationTest" onclick="navigateVideoAtTime(612.2326861430512)">Go To 612</button>
 <button id="navigationTest" onclick="navigateVideoAtTime(417.2683831168832)">Go To 417</button> -->
 <!-- other -->
-  <div class="col-3">
-    <button id="unmuteButton">UnMute</button>
-  </div>
+    <button id="unmuteButton" class="btn btn-primary col">UnMute</button>
 <!-- <button id="addElementButton">Add Item</button> -->
+</div>
 </div>
 
 <!-- add new item to the list. -->
