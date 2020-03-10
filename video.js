@@ -186,13 +186,15 @@ function createDownloadLink(blob) {
 	au.src = url;
 
   //button to the timestamp
-  navBtn.innerHTML = currentTimestamp.toString();
+  // navBtn.innerHTML = currentTimestamp.toString();
+  navBtn.innerHTML = timeFormatting(currentTimestamp);
+  navBtn.setAttribute("class", "btn btn-primary");
   navBtn.setAttribute("onclick", "navigateVideoAtTime("+currentTimestamp.toString()+")");
 
 	//save to disk link
 	link.href = url;
 	link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
-	link.innerHTML = "Save to disk";
+	link.innerHTML = filename;
 
 	//add the new audio element to li
 	li.appendChild(au);
@@ -201,6 +203,40 @@ function createDownloadLink(blob) {
 	li.appendChild(link);
 	recordingsList.appendChild(li);
 
+  var tr = document.createElement('tr');
+  var th = document.createElement('th');
+  var btn_td = document.createElement('td');
+  var au_td = document.createElement('td');
+  var time_td = document.createElement('td');
+  th.scope = "row";
+  th.innerHTML = counter;
+  btn_td.appendChild(navBtn);
+  au_td.appendChild(au);
+  time_td.appendChild(link);
+
+  tr.appendChild(th);
+  tr.appendChild(btn_td);
+  tr.appendChild(au_td);
+  tr.appendChild(time_td);
+
+  audioNoteList.appendChild(tr);
+
+
+
   // after recording done, resume playing video
   player.playVideo();
+}
+
+function timeFormatting(rawSeconds) {
+  var min = Math.floor(rawSeconds/60);
+  var second = Math.floor(rawSeconds - (60 * min));
+  var secondString;
+  // second toString
+  if (second < 10) {
+    secondString = "0" + second.toString();
+  } else {
+    secondString = second.toString();
+  }
+  var result = min.toString() + ":" + secondString;
+  return result;
 }
