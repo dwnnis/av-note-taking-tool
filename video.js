@@ -49,7 +49,7 @@ function onYouTubeIframeAPIReady() {
       'onStateChange': onPlayerStateChange
     },
     playerVars: {
-      playsinline: 0
+      playsinline: 1
     }
   });
 }
