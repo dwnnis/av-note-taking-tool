@@ -18,13 +18,13 @@ var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var timestampButton = document.getElementById("timestampButton");
 var unmuteButton = document.getElementById("unmuteButton");
-var addElementButton = document.getElementById("addElementButton");
+// var addElementButton = document.getElementById("addElementButton");
 
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 timestampButton.addEventListener("click", updatetime);
 unmuteButton.addEventListener("click", unmute);
-addElementButton.addEventListener("click", addElement);
+// addElementButton.addEventListener("click", addElement);
 
 /*
   Official Example of YouTube iframe API
@@ -183,7 +183,10 @@ function createDownloadLink(blob) {
 
 	//add controls to the <audio> element
 	au.controls = true;
+  au.setAttribute("style", "width: 210px;")
 	au.src = url;
+
+
 
   //button to the timestamp
   // navBtn.innerHTML = currentTimestamp.toString();
@@ -201,7 +204,7 @@ function createDownloadLink(blob) {
   li.appendChild(navBtn);
 	li.appendChild(document.createTextNode(filename+".wav "))
 	li.appendChild(link);
-	recordingsList.appendChild(li);
+	// recordingsList.appendChild(li);
 
   var tr = document.createElement('tr');
   var th = document.createElement('th');
@@ -217,7 +220,7 @@ function createDownloadLink(blob) {
   tr.appendChild(th);
   tr.appendChild(btn_td);
   tr.appendChild(au_td);
-  tr.appendChild(time_td);
+  // tr.appendChild(time_td);
 
   audioNoteList.appendChild(tr);
 

@@ -3,13 +3,13 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 .fixedElement {
     background-color: #c0c0c0;
     position:fixed;
     top:0;
-    width:100%;
+    width:auto;
     z-index:100;
 }
 .video-responsive{
@@ -49,20 +49,20 @@
   <button id="navigationTest" onclick="navigateVideoAtTime(612.2326861430512)">Go To 612</button>
   <button id="navigationTest" onclick="navigateVideoAtTime(417.2683831168832)">Go To 417</button> -->
       <button id="unmuteButton" class="btn btn-primary col">UnMute</button>
-      <button id="addElementButton" class="btn btn-primary col">Add Item</button>
+      <!-- <button id="addElementButton" class="btn btn-primary col">Add Item</button> -->
   </div>
 </div>
 </div>
 <!-- add new item to the list. -->
-<div>
+<div class="container">
   <ol id="recordingsList"></ol>
   <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Moment</th>
-      <th scope="col">Audio</th>
-      <th scope="col">Time</th>
+      <th scope="col" style="width: 210px;">Audio</th>
+      <!-- <th scope="col">Time</th> -->
     </tr>
   </thead>
   <tbody id="audioNoteList">
