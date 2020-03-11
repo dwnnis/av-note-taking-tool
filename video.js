@@ -16,13 +16,13 @@ var audioContext; //audio context to help us record
 
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
-var timestampButton = document.getElementById("timestampButton");
+// var timestampButton = document.getElementById("timestampButton");
 var unmuteButton = document.getElementById("unmuteButton");
 // var addElementButton = document.getElementById("addElementButton");
 
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
-timestampButton.addEventListener("click", updatetime);
+// timestampButton.addEventListener("click", updatetime);
 unmuteButton.addEventListener("click", unmute);
 // addElementButton.addEventListener("click", addElement);
 
