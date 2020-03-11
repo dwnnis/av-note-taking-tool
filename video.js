@@ -113,7 +113,7 @@ function unmute(){
 }
 
 // ADD ITEM: add new item
-var counter = 0;
+var counter = 1;
 function addElement() {
   var newDiv = document.createElement("div");
   var newId = "div".concat(counter.toString());
@@ -123,9 +123,9 @@ function addElement() {
   newDiv.appendChild(newContent);
 
   var previousDiv = document.getElementById("div".concat((counter-1).toString()));
-  if (counter == 0) {
+  if (counter == 1) {
     document.body.insertBefore(newDiv, document.getElementById("note-list"));
-  } else if (counter != 0) {
+  } else if (counter != 1) {
     document.body.insertBefore(newDiv, previousDiv);
   }
   counter += 1;
@@ -188,9 +188,8 @@ function createDownloadLink(blob) {
 
 	//add controls to the <audio> element
 	au.controls = true;
-  au.setAttribute("style", "width: 210px; height: 40px;")
+  au.setAttribute("style", "width: 260px; height: 40px;")
 	au.src = url;
-
 
 
   //button to the timestamp
