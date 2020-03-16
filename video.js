@@ -108,6 +108,7 @@ window.onload = function() {
 
         var playBtn = document.createElement("button"); // Player call
         var isPlaying = false;
+        var playTimestamp;
 
         tr.appendChild(th);
         tr.appendChild(btn_td);
@@ -150,16 +151,14 @@ window.onload = function() {
           }
         }
 
-        function clickNavBtn() {
-          navigateVideoAtTime(cursor.value.timestamp.toString());
-          au.play();
-        }
         navBtn.innerHTML = timeFormatting(cursor.value.timestamp); // change timestamp
         navBtn.setAttribute("class", "btn btn-primary");
+        playTimestamp = cursor.value.timestamp;
         // navBtn.setAttribute("onclick", "navigateVideoAtTime("+cursor.value.timestamp.toString()+");"+au.play()+";");
-        // navBtn.setAttribute("onclick", "clickNavBtn("+cursor.value.timestamp+", "+au+")");
+
         navBtn.addEventListener("click", function(event) {
-          navigateVideoAtTime(cursor.value.timestamp);
+          navigateVideoAtTime(playTimestamp);
+          console.log(playTimestamp);
           au.play();
         });
         // au.play();
