@@ -4,17 +4,20 @@ var timeLabel = document.getElementById("timeLabel");
 var recordButton = document.getElementById("recordButton");
 var timeString = "";
 var totalSeconds = 0;
+var timerRunning;
 
 function timeLabelDisplay() {
-  if (timeLabel.style.display === "none") {
-    recordButton.style.display = "none";
-    timeLabel.style.display = "block";
-    var timerRunning = setInterval(setTime, 1000);
+  if (recordButton.innerHTML === "Record") {
+    // recordButton.style.display = "none";
+    // timeLabel.style.display = "block";
+    timerRunning = setInterval(setTime, 1000);
     totalSeconds = 0;
+    recordButton.innerHTML = "00:00";
   } else {
     clearInterval(timerRunning);
-    timeLabel.style.display = "none";
-    recordButton.style.display = "block";
+    recordButton.innerHTML = "Record";
+    // timeLabel.style.display = "none";
+    // recordButton.style.display = "block";
     return;
   }
 }
@@ -38,7 +41,8 @@ function setTime() {
   ++totalSeconds;
   // secondsLabel.innerHTML = pad(totalSeconds % 60);
   // minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-  timeLabel.innerHTML = pad(parseInt(totalSeconds / 60)) + ":" + pad(totalSeconds % 60);
+  // timeLabel.innerHTML = pad(parseInt(totalSeconds / 60)) + ":" + pad(totalSeconds % 60);
+  recordButton.innerHTML = pad(parseInt(totalSeconds / 60)) + ":" + pad(totalSeconds % 60);
 }
 
 function pad(val) {
