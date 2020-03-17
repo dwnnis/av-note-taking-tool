@@ -231,6 +231,7 @@ window.onload = function() {
       rec.record()
 
       console.log("Recording started");
+      timeLabelDisplay();
 
     }).catch(function(err) {
         //enable the record button if getUserMedia() fails
@@ -243,6 +244,7 @@ window.onload = function() {
 
   function stopRecording() {
   	console.log("stopButton clicked");
+    timeLabelDisplay();
 
   	//disable the stop button, enable the record too allow for new recordings
   	stopButton.disabled = true;
