@@ -387,10 +387,12 @@ function stopVideo() {
 
 //    NAVIGATE BUTTON: 1) go to certain time 2) pause
 function navigateVideoAtTime(timestamp) {
+  var unmuteButtonImg = document.getElementById('unmuteButtonImg');
   player.seekTo(timestamp, true);
   player.playVideo();
-  unmute();
-  // player.mute();
+  // unmute();
+  player.mute();
+  unmuteButtonImg.src = "images/icons8-no-audio-100.png";
 }
 
 //    ADD ITEM: add new item
@@ -483,8 +485,8 @@ function dateFormatting() {
   var mm = now.getMonth()+1;
   var yyyy = now.getFullYear();
   var hh = now.getHours();
-  var mn = now.getHours();
-  var ss = now.getHours();
+  var mn = now.getMinutes();
+  var ss = now.getSeconds();
   function format(time) {
     if(time<10) {
       time='0'+time;
@@ -500,7 +502,7 @@ window.addEventListener("orientationchange", function() {
     // alert(window.orientation);
     var targetClass = document.getElementsByTagName("iframe");
     var table = document.getElementsByTagName("table");
-    
+
     if (window.innerWidth > window.innerHeight) {
       // if horizontal, 1) hide table. 2) contains the button in full screenshot.
       targetClass[0].setAttribute("style", "height:32vh;");
