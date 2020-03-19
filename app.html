@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.fixedElement {
+    background-color: #c0c0c0;
+    position:fixed;
+    top:0;
+    width:auto;
+    z-index:100;
+}
+.video-responsive{
+    /* overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0; */
+
+    /* overflow:hidden; */
+    /* padding-bottom:56.25%; */
+    /* padding-bottom:90vh; */
+    position:relative;
+    height:100%;
+}
+.button-container {
+    position:relative;
+    top:0;
+}
+.video-responsive iframe{
+    /* left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute; */
+
+    left:0;
+    top:0;
+    height:32vh;
+    width:100%;
+    position:relative;
+}
+.ytp-pause-overlay
+ {
+    bottom:-200px; //give !important if not working
+ }
+ .fill
+ {
+   background-color: white;
+ }
+</style>
+<body>
+
+<!-- <h1>Audio Note-taking</h1>
+<p>Tool for audio note-taking during watching video</p> -->
+<div id="playElements" class="sticky-top fill">
+  <!-- <div class="video-responsive" style="padding-bottom:56.25%;position:relative;"> -->
+  <div class="video-responsive">
+    <div id="player"></div>
+    <div class="container button-container">
+      <div class="row">
+          <!-- <button id="timestampButton" class="btn btn-primary col">Timestamp</button> -->
+          <button id="recordButton" class="btn btn-danger col-5">🔴Record Note</button>
+          <!-- <button id="timeLabel" class="btn btn-danger col" style="display:none" disabled>00:00</button> -->
+          <button id="stopButton" class="btn btn-danger col-5" disabled>Finish Note</button>
+          <!-- <div id="timeLabel" class="col" style="display:none">
+            <label id="minutes">00</label>:<label id="seconds">00</label>
+          </div> -->
+      <!-- <button id="screenshot" onclick="screenshot()">Screenshot</button>
+      <button id="navigationTest" onclick="navigateVideoAtTime(208.95047290653991)">Go To 208</button>
+      <button id="navigationTest" onclick="navigateVideoAtTime(0)">Go To 0</button>
+      <button id="navigationTest" onclick="navigateVideoAtTime(612.2326861430512)">Go To 612</button>
+      <button id="navigationTest" onclick="navigateVideoAtTime(417.2683831168832)">Go To 417</button> -->
+          <button id="unmuteButton" class="btn btn-light col-2">
+            <img id="unmuteButtonImg" src="images/icons8-audio-100.png" style="height: 20px;"/>
+          </button>
+          <!-- <button id="addElementButton" class="btn btn-primary col">Add Item</button> -->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- First name: <input id="firstName" type="text" name="fname">
+<button class="btn btn-secondary" onclick="testSaveFunction()">Try it</button> -->
+<div id="result"></div>
+<!-- add new item to the list. -->
+<div class="container">
+  <ol id="recordingsList"></ol>
+  <table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Timestamp</th>
+      <th scope="col" style="width: 260px;">Audio</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody id="audioNoteList">
+  </tbody>
+</table>
+</div>
+<button id="downloadButton" class="btn btn-light">Download</button>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="timer.js"></script>
+<script type="text/javascript" src="muteDisplay.js"></script>
+<script type="text/javascript" src="jszip.min.js"></script>
+<script type="text/javascript" src="FileSaver.js"></script>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+
+</body>
+</html>

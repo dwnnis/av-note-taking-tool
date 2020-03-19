@@ -17,6 +17,7 @@ var audioContext; //audio context to help us record
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var unmuteButton = document.getElementById("unmuteButton");
+var downloadButton = document.getElementById("downloadButton");
 // var timestampButton = document.getElementById("timestampButton");
 // var addElementButton = document.getElementById("addElementButton");
 
@@ -37,6 +38,7 @@ window.onload = function() {
   recordButton.addEventListener("click", startRecording);
   stopButton.addEventListener("click", stopRecording);
   unmuteButton.addEventListener("click", unmute);
+  downloadButton.addEventListener("click", testDownloadFunction);
 
   let request = window.indexedDB.open('ant_db', 1);
 
@@ -213,7 +215,8 @@ window.onload = function() {
   var constraints = { audio: true, video:false };
   function startRecording() {
     currentTimestamp = player.getCurrentTime();
-    recordTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"});
+    // recordTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"});
+    recordTime = dateFormatting();
     player.pauseVideo();
   	console.log("recordButton clicked");
 
@@ -278,6 +281,36 @@ window.onload = function() {
     var result = min.toString() + ":" + secondString;
     return result;
   }
+
+  function testDownloadFunction() {
+    var cursorCounter = 1;
+    var zip = new JSZip();
+    var outputFile;
+    let objectStore = db.transaction('ant_os').objectStore('ant_os');
+    objectStore.openCursor().onsuccess = function(e) {
+      let cursor = e.target.result;
+      if(cursor) {
+        // go through all files and add them to a zip files
+        zip.file(cursor.value.time.toString()+"-"+cursor.value.timestamp.toString()+".wav", cursor.value.audio);
+        console.log(cursor.value.time.toString()+cursor.value.timestamp.toString()+" added");
+        // then proceed the cursor
+        cursorCounter += 1;
+        cursor.continue();
+      } else {
+        if (cursorCounter > 1) {
+          zip.generateAsync({type:"blob"}) // TODO: upload the file to our server.
+          .then(function(content) {
+            saveAs(content, "output"); // see FileSaver.js
+          });
+          cursorCounter = 1;
+          console.log('File Downloaded!');
+        } else {
+          console.log("No File was found in the storage.")
+        }
+      }
+    }
+  }
+
 }
 
 
@@ -306,8 +339,7 @@ function onYouTubeIframeAPIReady() {
     width: '100%',
     videoId: videoID,
     events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
+      'onReady': onPlayerReady
     },
     playerVars: {
       playsinline: 1
@@ -323,13 +355,13 @@ function onPlayerReady(event) {
 //    The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 60000);
-    done = true;
-  }
-}
+// var done = false;
+// function onPlayerStateChange(event) {
+//     if (event.data == YT.PlayerState.PLAYING && !done) {
+//     setTimeout(stopVideo, 60000);
+//     done = true;
+//   }
+// }
 function stopVideo() {
   player.stopVideo();
 }
@@ -357,12 +389,8 @@ function stopVideo() {
 function navigateVideoAtTime(timestamp) {
   player.seekTo(timestamp, true);
   player.playVideo();
-  player.mute();
-}
-
-//    UNMUTE
-function unmute(){
-  player.unMute();
+  unmute();
+  // player.mute();
 }
 
 //    ADD ITEM: add new item
@@ -397,7 +425,8 @@ function createDownloadLink(blob) {
   	var link = document.createElement('a');
 
   	//   name of .wav file to use during upload and download (without extendion)
-  	var filename = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"});
+  	// var filename = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"});
+    var filename = dateFormatting();
 
 	//   add controls to the <audio> element
 	au.controls = true;
@@ -448,6 +477,40 @@ function createDownloadLink(blob) {
   player.playVideo();
 }
 
+function dateFormatting() {
+  var now = new Date();
+  var dd = now.getDate();
+  var mm = now.getMonth()+1;
+  var yyyy = now.getFullYear();
+  var hh = now.getHours();
+  var mn = now.getHours();
+  var ss = now.getHours();
+  function format(time) {
+    if(time<10) {
+      time='0'+time;
+    }
+    return time;
+  }
+  now = format(mm)+"-"+format(dd)+"-"+yyyy+"-"+format(hh)+"-"+format(mn)+"-"+format(ss);
+  return now;
+}
+
+window.addEventListener("orientationchange", function() {
+    // Announce the new orientation number
+    // alert(window.orientation);
+    var targetClass = document.getElementsByTagName("iframe");
+    var table = document.getElementsByTagName("table");
+    
+    if (window.innerWidth > window.innerHeight) {
+      // if horizontal, 1) hide table. 2) contains the button in full screenshot.
+      targetClass[0].setAttribute("style", "height:32vh;");
+      table[0].style.display = "block";
+    } else if (window.innerWidth < window.innerHeight) {
+      // if vertical, 1) show table 2) change back to whatever the original is.
+      targetClass[0].setAttribute("style", "height:90vh;");
+      table[0].style.display = "none";
+    }
+}, false);
 
 
 // function testSaveFunction(){

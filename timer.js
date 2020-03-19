@@ -7,7 +7,7 @@ var totalSeconds = 0;
 var timerRunning;
 
 function timeLabelDisplay() {
-  if (recordButton.innerHTML === "Record") {
+  if (recordButton.innerHTML === "🔴Record Note") {
     // recordButton.style.display = "none";
     // timeLabel.style.display = "block";
     timerRunning = setInterval(setTime, 1000);
@@ -15,7 +15,7 @@ function timeLabelDisplay() {
     recordButton.innerHTML = "00:00";
   } else {
     clearInterval(timerRunning);
-    recordButton.innerHTML = "Record";
+    recordButton.innerHTML = "🔴Record Note";
     // timeLabel.style.display = "none";
     // recordButton.style.display = "block";
     return;
